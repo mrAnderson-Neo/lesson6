@@ -7,6 +7,7 @@
 
 import Foundation
 
+//
 class Human: CustomStringConvertible {
     var description: String{
         return """
@@ -43,7 +44,7 @@ class Human: CustomStringConvertible {
 
 
 struct Queue<T> {
-    private var myCollection: Array<T> = []
+    private var myCollection: Array<T> = []//
     
     mutating func push(_ element: T) {
         myCollection.append(element)
@@ -76,6 +77,7 @@ struct Queue<T> {
         return tmpArr
     }
     
+    //
     static func showNumbers(arr:[Int], predicate: (Int) -> Bool) -> Array<Int> {
         var tmpArr = [Int]()
         for element in arr {
@@ -100,7 +102,7 @@ struct Queue<T> {
     }
 }
 
-
+//
 var myQueue = Queue<Human>()
 myQueue.push(.init(name: "John", age: 25, sex: .men))
 myQueue.push(.init(name: "Roberta", age: 19, sex: .women))
@@ -124,7 +126,7 @@ for elHuman in Queue<Human>.showSexHuman(arr: myQueue.getMyCollection(), predica
     print("\(elHuman) \n \(separator)")
 }
 
-
+//
 
 var myQueueNumbers = Queue<Int>()
 myQueueNumbers.push(1)
@@ -135,13 +137,13 @@ myQueueNumbers.push(56)
 
 print("\n\nВыводим четные числа")
 
-for numb in Queue<Int>.showNumbers(arr: myQueueNumbers.getMyCollection()) { $0%2 == 0 } {
+for numb in Queue<Int>.showNumbers(arr: myQueueNumbers.getMyCollection(), predicate: { $0%2 == 0 }) {
     print("\(numb)")
 }
 
 print("\n\nВыводим нечетные числа")
 
-for numb in Queue<Int>.showNumbers(arr: myQueueNumbers.getMyCollection()) { $0%2 != 0 } {
+for numb in Queue<Int>.showNumbers(arr: myQueueNumbers.getMyCollection(), predicate: { $0%2 != 0 }) {
     print("\(numb)")
 }
 
@@ -151,3 +153,4 @@ print("\nПроверяем что вернёт subscript если одним и
 // Единицу передаю чтобы понять что мол всё хорошо с массивом
 var someValue = myQueue[1, 5]
 print(someValue)
+//
